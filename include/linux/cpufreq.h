@@ -513,11 +513,10 @@ extern struct cpufreq_governor cpufreq_gov_conservative;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE)
 extern struct cpufreq_governor cpufreq_gov_interactive;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_interactive)
-<<<<<<< HEAD
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_SCHED)
 extern struct cpufreq_governor cpufreq_gov_sched;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_sched)
-=======
+
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_BLU_ACTIVE)
 extern struct cpufreq_governor cpufreq_gov_blu_active;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_blu_active)
@@ -530,6 +529,7 @@ extern struct cpufreq_governor cpufreq_gov_darkness;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_ALUCARD)
 extern struct cpufreq_governor cpufreq_gov_alucard;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_alucard)
+
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_CHILL)
 extern struct cpufreq_governor cpufreq_gov_chill;
 #define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_chill)
@@ -539,8 +539,7 @@ extern struct cpufreq_governor cpufreq_gov_relaxed;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_ELECTRON)
 extern struct cpufreq_governor cpufreq_gov_electron;
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_electron)
->>>>>>> def9956b8121... cpufreq: Add Electron governor
->>>>>>> 58d11ef... cpufreq: Add Electron governor
+
 #endif
 
 /*********************************************************************
