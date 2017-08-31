@@ -16,11 +16,12 @@
 #include <linux/debugfs.h>
 #include <linux/types.h>
 #include <trace/events/power.h>
-
 #include "power.h"
-
+#include "boeffla_wl_blocker.h"
 
 #ifdef CONFIG_BOEFFLA_WL_BLOCKER
+
+char list_wl_search[LENGTH_LIST_WL_SEARCH] = {0};
 char list_wl[255];
 char list_wl_search[257];
 bool wl_blocker_active = false;
@@ -452,7 +453,12 @@ static void wakeup_source_activate(struct wakeup_source *ws)
 // AP: Function to check if a wakelock is on the wakelock blocker list
 static bool check_for_block(struct wakeup_source *ws)
 {
+<<<<<<< HEAD
 	char wakelock_name[52];
+=======
+	char wakelock_name[52] = {0};
+	int length;
+>>>>>>> a1aabc2... boeffla_wl_blocker: update to wakelock blocker driver v1.1.0
 
 	// if debug mode on, print every wakelock requested
 	if (wl_blocker_debug)
@@ -465,8 +471,9 @@ static bool check_for_block(struct wakeup_source *ws)
 	// check if wakelock is in wake lock list to be blocked
 	if (ws)
 	{
-		// wake lock names which are longer than 50 chars are not handled
-		if (strlen(ws->name) > 50)
+		// wake lock names handled have maximum length=50 and minimum=1
+		length = strlen(ws->name);
+		if ((length > 50) || (length < 1))
 			return false;
 
 		sprintf(wakelock_name, ";%s;", ws->name);

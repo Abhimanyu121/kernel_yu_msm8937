@@ -99,6 +99,7 @@ int nr_threads;			/* The idle threads do not count.. */
 int max_threads;		/* tunable limit on nr_threads */
 
 DEFINE_PER_CPU(unsigned long, process_counts) = 0;
+void cpufreq_task_stats_exit(struct task_struct *);
 
 __cacheline_aligned DEFINE_RWLOCK(tasklist_lock);  /* outer */
 
@@ -1091,6 +1092,7 @@ static int copy_signal(unsigned long clone_flags, struct task_struct *tsk)
 
 	sig->nr_threads = 1;
 	atomic_set(&sig->live, 1);
+
 	atomic_set(&sig->sigcnt, 1);
 
 	/* list_add(thread_node, thread_head) without INIT_LIST_HEAD() */
